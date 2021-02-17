@@ -1,0 +1,43 @@
+﻿@using Funcionarios.Models;
+@using System.Linq;
+
+@model List<FuncionarioSimplificado>
+
+@{
+    ViewBag.Title = "Pagina Inicial";
+}
+
+<div id="tituloPagina" class="row">
+    <div id="title" class="col-md-6">
+        <h4>@ViewBag.Header</h4>
+    </div>
+    <div id="addFuncionario" class="col-md-6">
+        <button type="button" class="btn btn-primary">
+            @Html.ActionLink("Novo Funcionário", "NovoFuncionario", "Home", new { area = "" }, new { style="text-decoration:none;color:white;"})
+        </button>
+    </div>
+</div>
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var funcionario in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(model => funcionario.Codigo)</td>
+                    <td>@Html.DisplayFor(model => funcionario.Nome)</td>
+                    <td><button type="button" class="btn btn-warning">Alterar</button></td>
+                    <td><button type="button" class="btn btn-danger">Excluir</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,8 @@
+# Pastas
+bin/
+obj/
+packages/
+.vs/
+# Arquivos
+Web.Debug.config
+Web.Release.config
