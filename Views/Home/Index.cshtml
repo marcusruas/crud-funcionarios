@@ -32,18 +32,24 @@
         <tbody>
             @foreach (var funcionario in Model)
             {
-                <tr>
-                    <td>@Html.DisplayFor(model => funcionario.Codigo)</td>
-                    <td>@Html.DisplayFor(model => funcionario.Nome)</td>
-                    <td><button type="button" class="btn btn-warning">Alterar</button></td>
-                    @using(Html.BeginForm("ExcluirFuncionario", "Home"))
-                    {
-                        <td>
-                            <input type="hidden" name="funcionario" value="@funcionario.Codigo" />
-                            <button type="submit" class="btn btn-danger">Excluir</button>
-                        </td>
-                    }
-                </tr>
+            <tr>
+                <td>@Html.DisplayFor(model => funcionario.Codigo)</td>
+                <td>@Html.DisplayFor(model => funcionario.Nome)</td>
+                @using (Html.BeginForm("DadosFuncionario", "Home"))
+                {
+                    <td>
+                        <input type="hidden" name="funcionario" value="@funcionario.Codigo" />
+                        <button type="submit" class="btn btn-warning">Alterar</button>
+                    </td>
+                }
+                @using (Html.BeginForm("ExcluirFuncionario", "Home"))
+                {
+                    <td>
+                        <input type="hidden" name="funcionario" value="@funcionario.Codigo" />
+                        <button type="submit" class="btn btn-danger">Excluir</button>
+                    </td>
+                }
+            </tr>
             }
         </tbody>
     </table>

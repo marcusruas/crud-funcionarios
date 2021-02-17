@@ -10,8 +10,10 @@ namespace Funcionarios.Repository.Interface
     public interface IFuncionarioRepository
     {
         bool CadastrarFuncionario(FuncionarioInclusao funcionario);
+        bool AtualizarFuncionario(FuncionarioAlteracao funcionario);
         bool ExcluirFuncionario(int funcionario);
         IEnumerable<FuncionarioSimplificado> ListarFuncionarios();
+        FuncionarioAlteracao ObterFuncionarioPorId(int funcionario);
         IEnumerable<Estado> ListarEstados();
     }
 }

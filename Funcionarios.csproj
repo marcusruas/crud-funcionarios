@@ -163,10 +163,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\FuncionarioAlteracao.cs" />
     <Compile Include="Models\Estado.cs" />
+    <Compile Include="Models\FuncionarioAlteracaoViewModel.cs" />
     <Compile Include="Models\FuncionarioInclusao.cs" />
     <Compile Include="Models\FuncionarioSimplificado.cs" />
-    <Compile Include="Models\NovoFuncionarioViewModel.cs" />
+    <Compile Include="Models\DadosFuncionarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Implementation\FuncionarioRepository.cs" />
     <Compile Include="Repository\Helpers\ConnectionCreator.cs" />
@@ -185,10 +187,16 @@
     <Content Include="Repository\SQL\Funcionario\deleteFuncionario.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Repository\SQL\Funcionario\updateFuncionario.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Repository\SQL\Funcionario\insertFuncionario.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Repository\SQL\Funcionario\selectEstados.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Repository\SQL\Funcionario\selectFuncionarioCompleto.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Repository\SQL\Funcionario\selectFuncionariosSimplificado.sql">
@@ -223,6 +231,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\NovoFuncionario.cshtml" />
+    <Content Include="Views\Home\DadosFuncionario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

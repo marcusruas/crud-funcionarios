@@ -5,9 +5,9 @@ using System.Web;
 
 namespace Funcionarios.Models
 {
-    public class NovoFuncionarioViewModel
+    public class FuncionarioAlteracaoViewModel
     {
         public List<Estado> Estados { get; set; }
-        public FuncionarioInclusao Funcionario { get; set; }
+        public FuncionarioAlteracao Funcionario { get; set; }
     }
 }

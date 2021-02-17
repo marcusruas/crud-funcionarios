@@ -25,7 +25,7 @@ namespace Funcionarios.Controllers
         {
             ViewBag.Header = "Novo funcionário";
             var estados = _repository.ListarEstados();
-            var viewModel = new NovoFuncionarioViewModel()
+            var viewModel = new DadosFuncionarioViewModel()
             {
                 Estados = estados.ToList(),
                 Funcionario = null
@@ -33,7 +33,23 @@ namespace Funcionarios.Controllers
             return View(viewModel);
         }
 
-        public ActionResult AddFuncionario(FuncionarioInclusao funcionario)
+        public ActionResult DadosFuncionario(int funcionario)
+        {
+            if (funcionario == 0)
+                return RedirectToAction("Index");
+
+            ViewBag.Header = "Atualizar funcionário";
+            var estados = _repository.ListarEstados();
+            var dadosFuncionario = _repository.ObterFuncionarioPorId(funcionario);
+            var viewModel = new FuncionarioAlteracaoViewModel()
+            {
+                Estados = estados.ToList(),
+                Funcionario = dadosFuncionario
+            };
+            return View(viewModel);
+        }
+
+        public ActionResult AdicionarFuncionario(FuncionarioInclusao funcionario)
         {
             bool sucesso = _repository.CadastrarFuncionario(funcionario);
             if (sucesso)
@@ -42,8 +58,20 @@ namespace Funcionarios.Controllers
                 throw new Exception("Falha ao cadastrar funcionário.");
         }
 
+        public ActionResult AlterarFuncionario(FuncionarioAlteracao funcionario)
+        {
+            bool sucesso = _repository.AtualizarFuncionario(funcionario);
+            if (sucesso)
+                return RedirectToAction("Index");
+            else
+                throw new Exception("Falha ao atualizar funcionário.");
+        }
+
         public ActionResult ExcluirFuncionario(int funcionario)
         {
+            if (funcionario == 0)
+                return RedirectToAction("Index");
+
             bool sucesso = _repository.ExcluirFuncionario(funcionario);
             if (sucesso)
                 return RedirectToAction("Index");

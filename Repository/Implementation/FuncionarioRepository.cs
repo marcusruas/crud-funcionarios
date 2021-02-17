@@ -13,6 +13,15 @@ namespace Funcionarios.Repository.Implementation
         {
         }
 
+        public bool AtualizarFuncionario(FuncionarioAlteracao funcionario)
+        {
+            using (var connection = CriarNovaConexao("Empresa"))
+            {
+                string comando = ObterConteudoArquivoSQL("updateFuncionario");
+                return connection.Execute(comando, funcionario) == 1;
+            }
+        }
+
         public bool CadastrarFuncionario(FuncionarioInclusao funcionario)
         {
             using (var connection = CriarNovaConexao("Empresa"))
@@ -52,6 +61,19 @@ namespace Funcionarios.Repository.Implementation
             {
                 string comando = ObterConteudoArquivoSQL("selectFuncionariosSimplificado");
                 funcionarios = connection.Query<FuncionarioSimplificado>(comando).ToList();
+            }
+
+            return funcionarios;
+        }
+
+        public FuncionarioAlteracao ObterFuncionarioPorId(int funcionario)
+        {
+            FuncionarioAlteracao funcionarios;
+
+            using (var connection = CriarNovaConexao("Empresa"))
+            {
+                string comando = ObterConteudoArquivoSQL("selectFuncionarioCompleto");
+                funcionarios = connection.QueryFirstOrDefault<FuncionarioAlteracao>(comando, new { funcionario });
             }
 
             return funcionarios;
