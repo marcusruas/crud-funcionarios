@@ -41,5 +41,14 @@ namespace Funcionarios.Controllers
             else
                 throw new Exception("Falha ao cadastrar funcionário.");
         }
+
+        public ActionResult ExcluirFuncionario(int funcionario)
+        {
+            bool sucesso = _repository.ExcluirFuncionario(funcionario);
+            if (sucesso)
+                return RedirectToAction("Index");
+            else
+                throw new Exception("Falha ao excluir funcionário.");
+        }
     }
 }

@@ -22,6 +22,15 @@ namespace Funcionarios.Repository.Implementation
             }
         }
 
+        public bool ExcluirFuncionario(int funcionario)
+        {
+            using (var connection = CriarNovaConexao("Empresa"))
+            {
+                string comando = ObterConteudoArquivoSQL("deleteFuncionario");
+                return connection.Execute(comando, new { funcionario }) == 1;
+            }
+        }
+
         public IEnumerable<Estado> ListarEstados()
         {
             List<Estado> estados;

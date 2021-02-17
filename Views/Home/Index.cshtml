@@ -36,7 +36,13 @@
                     <td>@Html.DisplayFor(model => funcionario.Codigo)</td>
                     <td>@Html.DisplayFor(model => funcionario.Nome)</td>
                     <td><button type="button" class="btn btn-warning">Alterar</button></td>
-                    <td><button type="button" class="btn btn-danger">Excluir</button></td>
+                    @using(Html.BeginForm("ExcluirFuncionario", "Home"))
+                    {
+                        <td>
+                            <input type="hidden" name="funcionario" value="@funcionario.Codigo" />
+                            <button type="submit" class="btn btn-danger">Excluir</button>
+                        </td>
+                    }
                 </tr>
             }
         </tbody>
