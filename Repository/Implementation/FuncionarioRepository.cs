@@ -13,6 +13,28 @@ namespace Funcionarios.Repository.Implementation
         {
         }
 
+        public bool CadastrarFuncionario(FuncionarioInclusao funcionario)
+        {
+            using (var connection = CriarNovaConexao("Empresa"))
+            {
+                string comando = ObterConteudoArquivoSQL("insertFuncionario");
+                return connection.Execute(comando, funcionario) == 1;
+            }
+        }
+
+        public IEnumerable<Estado> ListarEstados()
+        {
+            List<Estado> estados;
+
+            using (var connection = CriarNovaConexao("Empresa"))
+            {
+                string comando = ObterConteudoArquivoSQL("selectEstados");
+                estados = connection.Query<Estado>(comando).ToList();
+            }
+
+            return estados;
+        }
+
         public IEnumerable<FuncionarioSimplificado> ListarFuncionarios()
         {
             List<FuncionarioSimplificado> funcionarios;

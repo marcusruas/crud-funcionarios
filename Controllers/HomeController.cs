@@ -1,4 +1,7 @@
-﻿using Funcionarios.Repository.Interface;
+﻿using Funcionarios.Models;
+using Funcionarios.Repository.Interface;
+using System;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace Funcionarios.Controllers
@@ -21,7 +24,22 @@ namespace Funcionarios.Controllers
         public ActionResult NovoFuncionario()
         {
             ViewBag.Header = "Novo funcionário";
-            return View();
+            var estados = _repository.ListarEstados();
+            var viewModel = new NovoFuncionarioViewModel()
+            {
+                Estados = estados.ToList(),
+                Funcionario = null
+            };
+            return View(viewModel);
+        }
+
+        public ActionResult AddFuncionario(FuncionarioInclusao funcionario)
+        {
+            bool sucesso = _repository.CadastrarFuncionario(funcionario);
+            if (sucesso)
+                return RedirectToAction("Index");
+            else
+                throw new Exception("Falha ao cadastrar funcionário.");
         }
     }
 }

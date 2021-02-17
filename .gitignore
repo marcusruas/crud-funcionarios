@@ -6,3 +6,4 @@ packages/
 # Arquivos
 Web.Debug.config
 Web.Release.config
+conexoes.json
