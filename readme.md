@@ -1,5 +1,5 @@
 ## Cadastro de funcionários
-_Aplicação desenvolvida em ASP .NET MVC 5_
+_Aplicação desenvolvida em ASP .Net FrameWork 4.7.2_
 
 ## Sobre o projeto
 * Alguns pontos sobre este projeto
